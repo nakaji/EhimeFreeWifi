@@ -10,7 +10,7 @@ namespace EhimeFreeWiFi.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "えひめFreeWi-Fiマップ";
 
             return View();
         }
