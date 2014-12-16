@@ -1,0 +1,37 @@
+﻿<div class="jumbotron">
+    <h1>えひめFreeWi-Fiマップ</h1>
+    <p class="lead">「えひめFreeWi-Fi」として提供されている公衆無線LANの地図を提供します</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <textarea id="addressList" style="display:none"></textarea>
+
+        <div id="map" style="width: 80%; height: 400px;">
+
+        </div>
+
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/sirusiizu")
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+        $(function () {
+            sirusiizu.initialize("map");
+            $.ajax({
+                type: "GET",
+                url: "/api/AccessPoints",
+                success: function (json) {
+                    //var addrList = "";
+                    $.each(json, function () {
+                        $("#addressList").val(this.Address + "\n" + $("#addressList").val());
+                        //addrList += this.Address + "\n";
+                    });
+                    //sirusiizu.marking(addrList);
+                    sirusiizu.marking($("#addressList").val());
+                }
+            });
+        });
+    </script>
+}
