@@ -152,11 +152,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccessPointsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DynamicJson.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccessPoint.cs" />
     <Compile Include="Models\AccessPointRepository.cs" />
+    <Compile Include="Models\Geocoder.cs" />
+    <Compile Include="Models\GeoLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

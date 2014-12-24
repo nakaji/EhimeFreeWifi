@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AccessPointRepositoryTest.cs" />
+    <Compile Include="Model\GeocoderTest.cs" />
     <Compile Include="Model\WebCacheTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
