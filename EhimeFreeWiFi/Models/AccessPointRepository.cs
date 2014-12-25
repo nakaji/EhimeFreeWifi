@@ -38,7 +38,7 @@ namespace EhimeFreeWiFi.Models
                             Address = x[2].Value,
                             ServiceProvider = x[3].Value,
                             Location = geocorder.GetLocationFromAddress(x[2].Value)
-                        });
+                        }).ToList();
 
                     return spots;
                 }
