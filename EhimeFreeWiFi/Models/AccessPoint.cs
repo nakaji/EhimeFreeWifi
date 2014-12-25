@@ -9,7 +9,7 @@ namespace EhimeFreeWiFi.Models
     {
         public string Place { get; set; }
         public string Address { get; set; }
-
         public string ServiceProvider { get; set; }
+        public GeoLocation Location { get; set; }
     }
 }

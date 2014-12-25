@@ -24,19 +24,24 @@ namespace EhimeFreeWiFi.Models
                     xml = XDocument.Load(sgml);
                 }
 
-                var ns = xml.Root.Name.Namespace;
-                var spots = xml.Descendants(ns + "table")
-                    .Last()
-                    .Descendants(ns + "tr")
-                    .Skip(1) // タイトルをスキップ
-                    .Select(e => e.Elements(ns + "td").ToList())
-                    .Select(x => new AccessPoint
-                    {
-                        Place = x[1].Value,
-                        Address = x[2].Value,
-                        ServiceProvider = x[3].Value
-                    });
-                return spots;
+                using (var geocorder = new Geocoder())
+                {
+                    var ns = xml.Root.Name.Namespace;
+                    var spots = xml.Descendants(ns + "table")
+                        .Last()
+                        .Descendants(ns + "tr")
+                        .Skip(1) // タイトルをスキップ
+                        .Select(e => e.Elements(ns + "td").ToList())
+                        .Select(x => new AccessPoint
+                        {
+                            Place = x[1].Value,
+                            Address = x[2].Value,
+                            ServiceProvider = x[3].Value,
+                            Location = geocorder.GetLocationFromAddress(x[2].Value)
+                        });
+
+                    return spots;
+                }
             };
         }
 
